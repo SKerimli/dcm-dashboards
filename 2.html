@@ -1,0 +1,262 @@
+
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Экраны DCM - Сроки проектирования</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(135deg, #001f3f 0%, #004080 100%);
+                color: #e2e8f0;
+                font-family: 'Inter', sans-serif;
+                margin: 0;
+            }
+            .main-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 1.5rem;
+                min-height: 100vh;
+                width: 100vw;
+            }
+            .card {
+                background-color: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 1rem;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+                transition: transform 0.2s;
+                backdrop-filter: blur(5px);
+            }
+            .card:hover {
+                transform: translateY(-5px);
+            }
+            .metric-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 1.25rem;
+                color: #94a3b8;
+                text-align: center;
+            }
+            .metric-value {
+                font-size: clamp(3.5rem, 6vw, 7rem);
+                font-weight: 700;
+                line-height: 1;
+                color: #f1f5f9;
+            }
+            .metric-value-secondary {
+                font-size: clamp(2.5rem, 4.5vw, 5rem);
+                font-weight: 700;
+                line-height: 1;
+                color: #e2e8f0;
+                margin-top: 1rem;
+            }
+            .metric-value-small {
+                font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+                font-weight: 700;
+                line-height: 1;
+            }
+            .metric-dynamic {
+                font-size: clamp(1.25rem, 2.5vw, 2rem);
+                font-weight: 600;
+                margin-top: 0.5rem;
+                margin-bottom: 0.25rem;
+            }
+            .metric-label {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #64748b;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                margin-top: 0.25rem;
+            }
+            .metric-divider {
+                width: 60%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                margin: 1.5rem auto;
+            }
+            .dynamic-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 1rem;
+            }
+            .arrow {
+                margin-right: 0.25rem;
+            }
+            .text-green {
+                color: #10b981;
+            }
+            .text-red {
+                color: #ef4444;
+            }
+            .text-gray {
+                color: #a1a1aa;
+            }
+            .card-criteria {
+                grid-column: span 2;
+            }
+            .criteria-row {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+                gap: 2rem;
+                margin-top: 1.5rem;
+            }
+            .criteria-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
+            }
+            .criteria-label {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #94a3b8;
+                margin-bottom: 0.75rem;
+                text-align: center;
+            }
+            .criteria-value {
+                font-size: clamp(2rem, 4vw, 4rem);
+                font-weight: 700;
+                color: #f1f5f9;
+            }
+            @media (min-width: 1920px) {
+                .metric-title {
+                    font-size: 2rem;
+                }
+                .metric-value {
+                    font-size: clamp(5rem, 7vw, 10rem);
+                }
+                .metric-value-secondary {
+                    font-size: clamp(3.5rem, 5.5vw, 7rem);
+                }
+                .metric-value-small {
+                    font-size: clamp(4rem, 5.5vw, 6.5rem);
+                }
+                .metric-dynamic {
+                    font-size: clamp(1.75rem, 3vw, 3rem);
+                }
+                .metric-label {
+                    font-size: 1.25rem;
+                }
+                .criteria-label {
+                    font-size: 1.25rem;
+                }
+                .criteria-value {
+                    font-size: clamp(3rem, 5vw, 6rem);
+                }
+                .card {
+                    padding: 3rem;
+                }
+            }
+            @media (min-width: 2560px) {
+                .metric-title {
+                    font-size: 3rem;
+                }
+                .metric-value {
+                    font-size: clamp(7rem, 9vw, 14rem);
+                }
+                .metric-value-secondary {
+                    font-size: clamp(5rem, 7vw, 10rem);
+                }
+                .metric-value-small {
+                    font-size: clamp(5.5rem, 7vw, 10rem);
+                }
+                .metric-dynamic {
+                    font-size: clamp(2.5rem, 4vw, 4.5rem);
+                }
+                .metric-label {
+                    font-size: 1.75rem;
+                }
+                .criteria-label {
+                    font-size: 1.75rem;
+                }
+                .criteria-value {
+                    font-size: clamp(4.5rem, 6vw, 8rem);
+                }
+                .card {
+                    padding: 4rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            
+            <div class="card">
+                <div class="metric-title">Общий срок проектирования (дн)</div>
+                <div class="metric-value">70</div>
+                <div class="metric-dynamic text-green">(-8 дн.)</div>
+                <div class="metric-label">YoY</div>
+                <div class="metric-divider"></div>
+                <div class="metric-value-secondary">267</div>
+                <div class="metric-dynamic text-red">(+204 дн.)</div>
+                <div class="metric-label">MoM</div>
+            </div>
+            <div class="card">
+                <div class="metric-title">Срок проектирования типовой (дн)</div>
+                <div class="metric-value">71</div>
+                <div class="metric-dynamic text-green">(-7 дн.)</div>
+                <div class="metric-label">YoY</div>
+                <div class="metric-divider"></div>
+                <div class="metric-value-secondary">267</div>
+                <div class="metric-dynamic text-red">(+204 дн.)</div>
+                <div class="metric-label">MoM</div>
+            </div>
+            <div class="card">
+                <div class="metric-title">Срок проектирования нетиповой (дн)</div>
+                <div class="metric-value">66</div>
+                <div class="metric-dynamic text-green">(-32 дн.)</div>
+                <div class="metric-label">YoY</div>
+                <div class="metric-divider"></div>
+                <div class="metric-value-secondary">-</div>
+                <div class="metric-dynamic text-gray"></div>
+                <div class="metric-label">MoM</div>
+            </div>
+        <div class="card">
+            <div class="metric-title">Количество проектов</div>
+            <div class="metric-value">22</div>
+            <div class="metric-label">Типовых (73.3%)</div>
+            <div class="metric-divider"></div>
+            <div class="metric-value-secondary">8</div>
+            <div class="metric-label">Нетиповых (26.7%)</div>
+        </div>
+    <div class="card card-criteria">
+        <div class="metric-title">Критерии нетипового формата</div>
+        <div class="criteria-row">
+            <div class="criteria-item">
+                <div class="criteria-label">Аномальные площади и выручки</div>
+                <div class="criteria-value">8.1%</div>
+            </div>
+            <div class="criteria-item">
+                <div class="criteria-label">Новый формат / концепция</div>
+                <div class="criteria-value">18.9%</div>
+            </div>
+            <div class="criteria-item">
+                <div class="criteria-label">Конструктив и архитектурные риски</div>
+                <div class="criteria-value">2.7%</div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <script>
+            setTimeout(() => {
+                window.location.reload();
+            }, 300000);
+        </script>
+    </body>
+    </html>
+    
